@@ -15,6 +15,7 @@ import java.io.File
 import java.util.concurrent.ForkJoinPool
 import java.util.jar.JarFile
 
+@Suppress("Deprecation")
 class TransformHandler(
     private val classPool: ClassPool,
     private val sdkEditorConfig: SdkEditorConfig,

@@ -9,10 +9,7 @@ open class SdkEditorConfig {
 	 */
 	var parallel: Boolean = false
 
-	/**
-	 * Alias for [extraJarNames]
-	 */
-	var fixedJarNames: Set<String>? = null
+	private var fixedJarNames: Set<String>? = null
 
 	fun fixedJarNamesSet() = fixedJarNames
 

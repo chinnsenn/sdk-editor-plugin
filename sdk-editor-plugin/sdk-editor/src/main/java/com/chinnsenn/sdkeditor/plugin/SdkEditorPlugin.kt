@@ -10,6 +10,7 @@ import javassist.ClassPool
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
+@Suppress("Deprecation")
 class SdkEditorPlugin : Transform(), Plugin<Project> {
 
 	private lateinit var project: Project

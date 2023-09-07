@@ -1,11 +1,12 @@
 @file:Suppress("UnstableApiUsage")
 
 pluginManagement {
-	includeBuild("build-logic")
+	includeBuild("sdk-editor-plugin")
 	repositories {
 		google()
 		mavenCentral()
 		gradlePluginPortal()
+		mavenLocal()
 		maven("https://jitpack.io")
 		maven("https://plugins.gradle.org/m2/")
 	}
@@ -15,6 +16,7 @@ dependencyResolutionManagement {
 	repositories {
 		google()
 		mavenCentral()
+		mavenLocal()
 		maven("https://jitpack.io")
 		maven("https://plugins.gradle.org/m2/")
 	}

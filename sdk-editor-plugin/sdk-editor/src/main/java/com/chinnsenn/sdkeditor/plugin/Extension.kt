@@ -1,3 +1,4 @@
+@file:Suppress("Deprecation")
 package com.chinnsenn.sdkeditor.plugin
 
 import com.android.build.api.transform.DirectoryInput

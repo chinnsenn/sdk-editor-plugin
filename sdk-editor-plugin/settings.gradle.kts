@@ -7,5 +7,5 @@ dependencyResolutionManagement {
 		maven("https://plugins.gradle.org/m2/")
 	}
 }
-// 将 convention 模块加入编译
-include(":convention")
+// 将 sdk-editor 模块加入编译
+include(":sdk-editor")

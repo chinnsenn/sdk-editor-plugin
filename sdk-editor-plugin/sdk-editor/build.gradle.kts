@@ -1,6 +1,7 @@
 plugins {
 	// 使用 kotlin dsl 作为 gradle 构建脚本语言
 	`kotlin-dsl`
+//	`maven-publish`
 }
 
 // 配置字节码的兼容性
@@ -13,7 +14,6 @@ dependencies {
 	val agpVersion = "7.4.2"
 	val kotlinVersion = "1.8.20"
 	val catVersion = "31.1.1"
-//	val asmVersion = "9.3"
 	// AGP 依赖
 	implementation("com.android.tools.build:gradle:$agpVersion")
 	implementation("com.android.tools.build:gradle-api:$agpVersion")
@@ -21,14 +21,9 @@ dependencies {
 	implementation("commons-io:commons-io:2.13.0")
 	implementation("com.android.tools:sdk-common:$catVersion")
 
-	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 	implementation(gradleApi())
-	implementation("org.javassist:javassist:3.24.0-GA")
+	implementation("org.javassist:javassist:3.29.2-GA")
 	implementation("com.github.iwhys:sdk-editor-domain:1.2.0")
-	// Kotlin 依赖 —— 插件使用 Kotlin 实现
-//	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") {
-//		exclude(group = "org.ow2.asm")
-//	}
 }
 
 gradlePlugin {
@@ -41,3 +36,19 @@ gradlePlugin {
 		}
 	}
 }
+
+//publishing {
+//	publications {
+//		create<MavenPublication>("maven") {
+//			groupId = "com.chinnsenn"
+//			artifactId = "sdk-editor"
+//			version = "1.0"
+//
+//			from(components["java"])
+//		}
+//	}
+//
+//	repositories {
+//		maven("../../repo")
+//	}
+//}

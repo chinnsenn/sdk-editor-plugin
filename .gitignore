@@ -51,3 +51,4 @@ codelocator.gradle
 /tools/jiagu/tempAndroidManifest.xml
 /tools/jiagu/jiagu.db
 codeLocator.gradle
+/.java-version
