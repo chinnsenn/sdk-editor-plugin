@@ -52,3 +52,4 @@ codelocator.gradle
 /tools/jiagu/jiagu.db
 codeLocator.gradle
 /.java-version
+/sdk-editor-plugin/local-plugin-repository/

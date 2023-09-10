@@ -16,24 +16,20 @@
 
 package androidx.core.os;
 
-import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Build.VERSION;
 
 import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresOptIn;
-import androidx.annotation.RestrictTo;
 
 import com.iwhys.sdkeditor.domain.ReplaceClass;
-
-import java.util.Locale;
 
 /**
  * This class contains additional platform version checking methods for targeting pre-release
  * versions of Android.
  */
-@ReplaceClass("core:1.9.0")
+@ReplaceClass("core:1.6.0")
+@SuppressWarnings({"unused","Deprecation","removal"})
 public class BuildCompat {
 
     private BuildCompat() {
@@ -42,27 +38,20 @@ public class BuildCompat {
 
     /**
      * Checks if the codename is a matching or higher version than the given build value.
+     *
      * @param codename the requested build codename, e.g. {@code "O"} or {@code "OMR1"}
-     * @param buildCodename the value of {@link Build.VERSION#CODENAME}
-     *
      * @return {@code true} if APIs from the requested codename are available in the build.
-     *
-     * @hide
      */
-    @RestrictTo(RestrictTo.Scope.TESTS)
-    protected static boolean isAtLeastPreReleaseCodename(@NonNull String codename,
-                                                         @NonNull String buildCodename) {
+    protected static boolean isAtLeastPreReleaseCodename(@NonNull String codename) {
 
         // Special case "REL", which means the build is not a pre-release build.
-        if ("REL".equals(buildCodename)) {
+        if ("REL".equals(VERSION.CODENAME)) {
             return false;
         }
 
         // Otherwise lexically compare them.  Return true if the build codename is equal to or
         // greater than the requested codename.
-        final String buildCodenameUpper = buildCodename.toUpperCase(Locale.ROOT);
-        final String codenameUpper = codename.toUpperCase(Locale.ROOT);
-        return buildCodenameUpper.compareTo(codenameUpper) >= 0;
+        return VERSION.CODENAME.compareTo(codename) >= 0;
     }
 
     /**
@@ -146,7 +135,9 @@ public class BuildCompat {
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.Q)
     @Deprecated
     public static boolean isAtLeastQ() {
-        System.out.println("BuildCompat.BuildCompat is hacked");
+        System.out.println("=====================");
+        System.out.println("BuildCompat is hacked");
+        System.out.println("=====================");
         return VERSION.SDK_INT >= 29;
     }
 
@@ -169,76 +160,23 @@ public class BuildCompat {
      * Android S or newer.
      *
      * @return {@code true} if S APIs are available for use, {@code false} otherwise
-     * @deprecated Android S is a finalized release and this method is no longer necessary. It
-     *             will be removed in a future release of this library. Instead, use
-     *             {@code Build.VERSION.SDK_INT >= 31}.
      */
-    @SuppressLint("RestrictedApi")
     @ChecksSdkIntAtLeast(api = 31, codename = "S")
-    @Deprecated
     public static boolean isAtLeastS() {
-        return VERSION.SDK_INT >= 31
-            || (VERSION.SDK_INT >= 30 && isAtLeastPreReleaseCodename("S", VERSION.CODENAME));
+        return VERSION.SDK_INT >= 31 || isAtLeastPreReleaseCodename("S");
     }
 
     /**
-     * Checks if the device is running on a pre-release version of Android Sv2 or a release
-     * version of Android Sv2 or newer.
-     *
-     * @return {@code true} if Sv2 APIs are available for use, {@code false} otherwise
-     * @deprecated Android Sv2 is a finalized release and this method is no longer necessary. It
-     *             will be removed in a future release of this library. Instead, use
-     *             {@code Build.VERSION.SDK_INT >= 32}.
-     */
-    @PrereleaseSdkCheck
-    @ChecksSdkIntAtLeast(api = 32, codename = "Sv2")
-    @Deprecated
-    public static boolean isAtLeastSv2() {
-        return VERSION.SDK_INT >= 32
-            || (VERSION.SDK_INT >= 31 && isAtLeastPreReleaseCodename("Sv2", VERSION.CODENAME));
-    }
-
-    /**
-     * Checks if the device is running on a pre-release version of Android Tiramisu or a release
-     * version of Android Tiramisu or newer.
+     * Checks if the device is running on a pre-release version of Android T or a release version of
+     * Android T or newer.
      * <p>
-     * <strong>Note:</strong> When Android Tiramisu is finalized for release, this method will be
-     * removed and all calls must be replaced with {@code Build.VERSION.SDK_INT >= 33}.
-     *
-     * @return {@code true} if Tiramisu APIs are available for use, {@code false} otherwise
-     */
-    @PrereleaseSdkCheck
-    @ChecksSdkIntAtLeast(api = 33, codename = "Tiramisu")
-    public static boolean isAtLeastT() {
-        return VERSION.SDK_INT >= 33
-            || (VERSION.SDK_INT >= 32
-            && isAtLeastPreReleaseCodename("Tiramisu", VERSION.CODENAME));
-    }
-
-    /**
-     * Checks if the device is running on a pre-release version of Android U.
-     * <p>
-     * <strong>Note:</strong> When Android U is finalized for release, this method will be
+     * <strong>Note:</strong> When Android T is finalized for release, this method will be
      * removed and all calls must be replaced with {@code Build.VERSION.SDK_INT >=
-     * Build.VERSION_CODES.U}.
+     * Build.VERSION_CODES.T}.
      *
-     * @return {@code true} if U APIs are available for use, {@code false} otherwise
+     * @return {@code true} if T APIs are available for use, {@code false} otherwise
      */
-    @PrereleaseSdkCheck
-    @ChecksSdkIntAtLeast(codename = "UpsideDownCake")
-    public static boolean isAtLeastU() {
-        return VERSION.SDK_INT >= 33
-            && isAtLeastPreReleaseCodename("UpsideDownCake", VERSION.CODENAME);
+    public static boolean isAtLeastT() {
+        return isAtLeastPreReleaseCodename("T");
     }
-
-    /**
-     * Experimental feature set for pre-release SDK checks.
-     * <p>
-     * APIs annotated as part of this feature set should only be used when building against
-     * pre-release platform SDKs. They are safe to ship in production apps and alpha libraries,
-     * but they must not be shipped in beta or later libraries as they <strong>will be
-     * removed</strong> after their respective SDKs are finalized for release.
-     */
-    @RequiresOptIn
-    public @interface PrereleaseSdkCheck { }
 }

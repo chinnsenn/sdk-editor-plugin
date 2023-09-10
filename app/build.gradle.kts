@@ -1,14 +1,14 @@
 @file:Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
 
 plugins {
-	alias(libs.plugins.com.android.application)
-	alias(libs.plugins.org.jetbrains.kotlin.android)
-	id("com.chinnsenn.sdkeditor.plugin")
+	id("com.android.application")
+	id("kotlin-android")
+	id("com.chinnsenn.sdk-editor")
 }
 
 android {
 	namespace = "com.chinnsenn.sdkeditor"
-	compileSdk = 33
+	compileSdk = 31
 
 	defaultConfig {
 		applicationId = "com.chinnsenn.sdkeditor"
@@ -27,18 +27,17 @@ android {
 		}
 	}
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_17
-		targetCompatibility = JavaVersion.VERSION_17
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
 	}
 	kotlinOptions {
-		jvmTarget = "17"
+		jvmTarget = JavaLanguageVersion.of(11).toString()
 	}
 }
 
 dependencies {
 	implementation(libs.core.ktx)
 	implementation(libs.appcompat)
-	implementation(libs.material)
 	implementation(libs.constraintlayout)
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.test.ext.junit)
