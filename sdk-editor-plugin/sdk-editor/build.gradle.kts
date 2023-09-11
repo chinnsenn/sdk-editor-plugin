@@ -131,7 +131,7 @@ publishing {
 				}
 			}
 
-			named("sdkEditorPluginPluginMarkerMaven", MavenPublication::class.java){
+			named("sdkEditorPluginPluginMarkerMaven", MavenPublication::class.java) {
 				pom {
 					name.set(POM_NAME)
 					description.set(POM_DESCRIPTION)

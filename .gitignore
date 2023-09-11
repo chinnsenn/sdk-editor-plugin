@@ -40,16 +40,5 @@ captures/
 .externalNativeBuild
 algorithm/
 logs/
-/app/ebao/release/
-/tmpmob
-/gradle_d.txt
-/JustForCodeIndexModuleDebug
-/JustForCodeIndexModuleRelease
-codelocator.gradle
-/tools/jiagu/output
-/tools/jiagu/.cache
-/tools/jiagu/tempAndroidManifest.xml
-/tools/jiagu/jiagu.db
-codeLocator.gradle
 /.java-version
 /sdk-editor-plugin/local-plugin-repository/

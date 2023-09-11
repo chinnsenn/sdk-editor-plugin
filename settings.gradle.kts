@@ -1,11 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
 pluginManagement {
-//	includeBuild("sdk-editor-plugin")
+	includeBuild("sdk-editor-plugin")
 	repositories {
 		google()
 		mavenCentral()
-//		mavenLocal()
+		mavenLocal()
 		gradlePluginPortal()
 		maven("https://jitpack.io")
 		maven("https://plugins.gradle.org/m2/")
@@ -19,10 +19,8 @@ dependencyResolutionManagement {
 	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 	repositories {
 		google()
-		mavenCentral().apply {
-			println("mavenCentral = ${this.url}")
-		}
-//		mavenLocal()
+		mavenCentral()
+		mavenLocal()
 		maven("https://jitpack.io")
 		maven("https://plugins.gradle.org/m2/")
 		maven("https://s01.oss.sonatype.org/content/repositories/releases/")
@@ -44,7 +42,6 @@ dependencyResolutionManagement {
 			alias("constraintlayout").to("androidx.constraintlayout:constraintlayout:2.1.4")
 			alias("kotlin-stdlib").to("org.jetbrains.kotlin:kotlin-stdlib:1.4.31")
 			alias("sdk-editor-domain").to("com.github.iwhys:sdk-editor-domain:1.2.0")
-			alias("com-android-tools-build").to("com.android.tools.build:gradle:7.0.1")
 			alias("org-jetbrains-kotlin").to("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
 		}
 	}
