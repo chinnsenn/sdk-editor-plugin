@@ -1,6 +1,6 @@
 buildscript {
 	dependencies {
-		classpath("com.chinnsenn:sdk-editor:0.0.1")
+		classpath("com.chinnsenn:sdk-editor:0.0.1-SNAPSHOT")
 	}
 }
 plugins {
