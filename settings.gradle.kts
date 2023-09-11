@@ -5,10 +5,12 @@ pluginManagement {
 	repositories {
 		google()
 		mavenCentral()
-		mavenLocal()
+//		mavenLocal()
 		gradlePluginPortal()
 		maven("https://jitpack.io")
 		maven("https://plugins.gradle.org/m2/")
+
+		maven("https://s01.oss.sonatype.org/content/repositories/releases/")
 	}
 }
 enableFeaturePreview("VERSION_CATALOGS")
@@ -16,10 +18,13 @@ dependencyResolutionManagement {
 	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 	repositories {
 		google()
-		mavenCentral()
-		mavenLocal()
+		mavenCentral().apply {
+			println("mavenCentral = ${this.url}")
+		}
+//		mavenLocal()
 		maven("https://jitpack.io")
 		maven("https://plugins.gradle.org/m2/")
+		maven("https://s01.oss.sonatype.org/content/repositories/releases/")
 	}
 	versionCatalogs {
 		create("libs") {
